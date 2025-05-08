@@ -1,0 +1,77 @@
+type: tableWithToolbar
+fields:
+#  - title: string,
+#  - field: string,
+#  - align: 'left' | 'right' | 'center',
+#  - sortable: bool,
+#  - defaultSortDir: string,
+#  - width: string | number,
+#  - className: string | array,
+#  - dataType: string,
+#  - component: elementType,
+#  - render: func,
+#  - headerRender: func,
+#  - headerCellProps: object,
+#  - rowCellProps: object
+
+
+  - name: id
+    label: "{invoice.id}"
+    sortable: true
+    visible: false
+    align: "center"
+    headerCellProps: {}
+
+  - name: invoiceNum
+    label: "{invoice.number}"
+    sortable: true
+    visible: true
+    headerCellProps: {}
+
+  - name: lineNum
+    label: "{invoice.lineNum}"
+    sortable: true
+    visible: true
+    headerCellProps: {}
+
+  - name: description
+    label: "{invoice.description}"
+    sortable: true
+    visible: true
+    headerCellProps: {
+      tooltipContent : "Some information about this column"
+    }
+
+  - name: headerStatus
+    label: "{invoice.headerStatus}"
+    sortable: true
+    visible: true
+    headerCellProps: { }
+
+  - name: supplier
+    label: "{invoice.supplier}"
+    sortable: true
+    visible: true
+    headerCellProps: { }
+
+  - name: invoiceDate
+    label: "{invoice.invoiceDate}"
+    sortable: false
+    visible: true
+    headerCellProps: { }
+
+toolbarActions:
+  - actionType: ADVANCED_SEARCH
+
+  - actionType: SIMPLE_SEARCH
+
+  - actionType: ACTIONS_MENU
+    props: {
+      menuItems: [
+        {
+
+          buttonText: 'Load from file',
+          buttonValue: 'loadFromFile',
+          onClick: { loadFromFileOnClick }
+        } ]
+    }
