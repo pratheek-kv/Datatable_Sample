@@ -1,0 +1,1115 @@
+{
+  "fields": {
+[
+  {
+    "field": 'invoiceNum',
+    sortable: true,
+    title: 'Invoice #'
+  },
+  {
+    field: 'lineNum',
+    headerCellProps: {
+      verticalAlign: 'top'
+    },
+    sortable: true,
+    title: 'Line #'
+  },
+  {
+    field: 'invoiceDate',
+    title: 'Invoice Date'
+  },
+  {
+    field: 'supplier',
+    headerCellProps: {
+      tooltipContent: 'Some information about this column'
+    },
+    sortable: true,
+    title: 'Supplier'
+  },
+  {
+    field: 'headerStatus',
+    title: 'Header status'
+  },
+  {
+    field: 'desc',
+    sortable: true,
+    title: 'Description'
+  }
+]
+},
+toolbarActions={[
+{
+"actionType": "ADVANCED_SEARCH",
+"enableAddOnlyOnLastRow": false,
+"enableGrouping": true,
+"enableMatching": true,
+"maxGroups": "5",
+"commonConditions": {
+"dateClauses": {
+"fieldLabel": "Clause",
+"fieldName": "filterClause",
+"fieldType": "select",
+"fieldOptions": [
+{
+"id": "today",
+"name": "today"
+},
+{
+"id": "yesterday",
+"name": "yesterday"
+},
+{
+"id": "month",
+"name": "this month"
+},
+{
+"id": "last_month",
+"name": "last month"
+},
+{
+"id": "quarter",
+"name": "this quarter"
+},
+{
+"id": "last_quarter",
+"name": "last quarter"
+},
+{
+"id": "year",
+"name": "this year"
+},
+{
+"id": "last_year",
+"name": "last year"
+},
+{
+"id": "within",
+"name": "within the last",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+},
+{
+"fieldLabel": "Filter Units",
+"fieldName": "filterUnits",
+"fieldType": "select",
+"fieldOptions": [
+{
+"id": "days",
+"name": "days"
+},
+{
+"id": "weeks",
+"name": "weeks"
+},
+{
+"id": "months",
+"name": "months"
+}
+]
+}
+]
+},
+{
+"id": "within_next",
+"name": "within the next",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+},
+{
+"fieldLabel": "Filter Units",
+"fieldName": "filterUnits",
+"fieldType": "select",
+"fieldOptions": [
+{
+"id": "days",
+"name": "days"
+},
+{
+"id": "weeks",
+"name": "weeks"
+},
+{
+"id": "months",
+"name": "months"
+}
+]
+}
+]
+},
+{
+"id": "eq",
+"name": "is",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "date"
+}
+]
+},
+{
+"id": "less",
+"name": "on or before",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "date"
+}
+]
+},
+{
+"id": "greater",
+"name": "on or after",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "date"
+}
+]
+},
+{
+"id": "between",
+"name": "between",
+"relatedFields": [
+{
+"fieldLabel": "Start Date",
+"fieldName": "startDate",
+"fieldType": "date"
+},
+{
+"fieldLabel": "End Date",
+"fieldName": "endDate",
+"fieldType": "date"
+}
+]
+},
+{
+"id": "blank",
+"name": "is blank"
+},
+{
+"id": "not_blank",
+"name": "is not blank"
+}
+]
+},
+"textClauses": {
+"defaultOption": "blank",
+"fieldLabel": "Clause",
+"fieldName": "filterClause",
+"fieldType": "select",
+"fieldOptions": [
+{
+"id": "eq",
+"name": "is",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "con",
+"name": "contains",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "not_con",
+"name": "does not contain",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "starts_with",
+"name": "starts with",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "between",
+"name": "between",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+},
+{
+"fieldLabel": "Value To",
+"fieldName": "filterValueTo",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "blank",
+"name": "is blank"
+},
+{
+"id": "not_blank",
+"name": "is not blank"
+}
+]
+}
+},
+"filterByCondition": {
+"defaultOption": "shipping",
+"fieldLabel": "Filter By",
+"fieldName": "filterBy",
+"fieldType": "select",
+"fieldOptions": [
+{
+"id": "invoiceNum",
+"name": "Invoice #",
+"relatedFields": [
+{
+"defaultOption": "blank",
+"fieldLabel": "Clause",
+"fieldName": "filterClause",
+"fieldType": "select",
+"fieldOptions": [
+{
+"id": "eq",
+"name": "is",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "con",
+"name": "contains",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "not_con",
+"name": "does not contain",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "starts_with",
+"name": "starts with",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "between",
+"name": "between",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+},
+{
+"fieldLabel": "Value To",
+"fieldName": "filterValueTo",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "blank",
+"name": "is blank"
+},
+{
+"id": "not_blank",
+"name": "is not blank"
+}
+]
+}
+]
+},
+{
+"id": "lineNum",
+"name": "Line #",
+"relatedFields": [
+{
+"fieldLabel": "Clause",
+"fieldName": "filterClause",
+"fieldType": "select",
+"fieldOptions": [
+{
+"id": "eq",
+"name": "is",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "number"
+}
+]
+},
+{
+"id": "less",
+"name": "less than",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "number"
+}
+]
+},
+{
+"id": "greater",
+"name": "more than",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "number"
+}
+]
+},
+{
+"id": "between",
+"name": "between",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "number"
+},
+{
+"fieldLabel": "Value To",
+"fieldName": "filterValueTo",
+"fieldType": "number"
+}
+]
+},
+{
+"id": "blank",
+"name": "is blank"
+},
+{
+"id": "not_blank",
+"name": "is not blank"
+}
+]
+}
+]
+},
+{
+"id": "invoiceDate",
+"name": "Invoice Date",
+"relatedFields": [
+{
+"fieldLabel": "Clause",
+"fieldName": "filterClause",
+"fieldType": "select",
+"fieldOptions": [
+{
+"id": "today",
+"name": "today"
+},
+{
+"id": "yesterday",
+"name": "yesterday"
+},
+{
+"id": "month",
+"name": "this month"
+},
+{
+"id": "last_month",
+"name": "last month"
+},
+{
+"id": "quarter",
+"name": "this quarter"
+},
+{
+"id": "last_quarter",
+"name": "last quarter"
+},
+{
+"id": "year",
+"name": "this year"
+},
+{
+"id": "last_year",
+"name": "last year"
+},
+{
+"id": "within",
+"name": "within the last",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+},
+{
+"fieldLabel": "Filter Units",
+"fieldName": "filterUnits",
+"fieldType": "select",
+"fieldOptions": [
+{
+"id": "days",
+"name": "days"
+},
+{
+"id": "weeks",
+"name": "weeks"
+},
+{
+"id": "months",
+"name": "months"
+}
+]
+}
+]
+},
+{
+"id": "within_next",
+"name": "within the next",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+},
+{
+"fieldLabel": "Filter Units",
+"fieldName": "filterUnits",
+"fieldType": "select",
+"fieldOptions": [
+{
+"id": "days",
+"name": "days"
+},
+{
+"id": "weeks",
+"name": "weeks"
+},
+{
+"id": "months",
+"name": "months"
+}
+]
+}
+]
+},
+{
+"id": "eq",
+"name": "is",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "date"
+}
+]
+},
+{
+"id": "less",
+"name": "on or before",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "date"
+}
+]
+},
+{
+"id": "greater",
+"name": "on or after",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "date"
+}
+]
+},
+{
+"id": "between",
+"name": "between",
+"relatedFields": [
+{
+"fieldLabel": "Start Date",
+"fieldName": "startDate",
+"fieldType": "date"
+},
+{
+"fieldLabel": "End Date",
+"fieldName": "endDate",
+"fieldType": "date"
+}
+]
+},
+{
+"id": "blank",
+"name": "is blank"
+},
+{
+"id": "not_blank",
+"name": "is not blank"
+}
+]
+}
+]
+},
+{
+"id": "supplier",
+"name": "Supplier",
+"relatedFields": [
+{
+"defaultOption": "blank",
+"fieldLabel": "Clause",
+"fieldName": "filterClause",
+"fieldType": "select",
+"fieldOptions": [
+{
+"id": "eq",
+"name": "is",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "con",
+"name": "contains",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "not_con",
+"name": "does not contain",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "starts_with",
+"name": "starts with",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "between",
+"name": "between",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+},
+{
+"fieldLabel": "Value To",
+"fieldName": "filterValueTo",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "blank",
+"name": "is blank"
+},
+{
+"id": "not_blank",
+"name": "is not blank"
+}
+]
+}
+]
+},
+{
+"id": "headerStatus",
+"name": "Header status",
+"relatedFields": [
+{
+"defaultOption": "blank",
+"fieldLabel": "Clause",
+"fieldName": "filterClause",
+"fieldType": "select",
+"fieldOptions": [
+{
+"id": "eq",
+"name": "is",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "con",
+"name": "contains",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "not_con",
+"name": "does not contain",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "starts_with",
+"name": "starts with",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "between",
+"name": "between",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+},
+{
+"fieldLabel": "Value To",
+"fieldName": "filterValueTo",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "blank",
+"name": "is blank"
+},
+{
+"id": "not_blank",
+"name": "is not blank"
+}
+]
+}
+]
+},
+{
+"id": "desc",
+"name": "Description",
+"relatedFields": [
+{
+"enableFreeForm": true,
+"fieldLabel": "contains",
+"fieldName": "filterValue",
+"fieldType": "multiselect",
+"fieldOptions": [
+{
+"id": "draft",
+"name": "Draft"
+},
+{
+"id": "pending",
+"name": "Pending"
+},
+{
+"id": "approved",
+"name": "Approved"
+},
+{
+"id": "paid",
+"name": "Paid"
+}
+]
+}
+]
+},
+{
+"id": "clmadesc",
+"name": "CLMA Description",
+"relatedFields": [
+{
+"fieldLabel": "Clause",
+"fieldName": "filterClause",
+"fieldType": "select",
+"fieldOptions": [
+{
+"id": "eq",
+"name": "is",
+"relatedFields": [
+{
+"enableFreeForm": true,
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "multiselect",
+"fieldOptions": [
+{
+"id": "draft",
+"name": "Draft"
+},
+{
+"id": "pending",
+"name": "Pending"
+},
+{
+"id": "approved",
+"name": "Approved"
+},
+{
+"id": "paid",
+"name": "Paid"
+}
+]
+}
+]
+},
+{
+"id": "con",
+"name": "contains",
+"relatedFields": [
+{
+"enableFreeForm": true,
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "multiselect",
+"fieldOptions": [
+{
+"id": "draft",
+"name": "Draft"
+},
+{
+"id": "pending",
+"name": "Pending"
+},
+{
+"id": "approved",
+"name": "Approved"
+},
+{
+"id": "paid",
+"name": "Paid"
+}
+]
+}
+]
+},
+{
+"id": "not_con",
+"name": "does not contain",
+"relatedFields": [
+{
+"enableFreeForm": true,
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "multiselect",
+"fieldOptions": [
+{
+"id": "draft",
+"name": "Draft"
+},
+{
+"id": "pending",
+"name": "Pending"
+},
+{
+"id": "approved",
+"name": "Approved"
+},
+{
+"id": "paid",
+"name": "Paid"
+}
+]
+}
+]
+},
+{
+"id": "starts_with",
+"name": "starts with",
+"relatedFields": [
+{
+"enableFreeForm": true,
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "multiselect",
+"fieldOptions": [
+{
+"id": "draft",
+"name": "Draft"
+},
+{
+"id": "pending",
+"name": "Pending"
+},
+{
+"id": "approved",
+"name": "Approved"
+},
+{
+"id": "paid",
+"name": "Paid"
+}
+]
+}
+]
+}
+]
+}
+]
+},
+{
+"id": "shipping",
+"name": "Shipping",
+"relatedFields": [
+{
+"fieldLabel": "Clause",
+"fieldName": "filterClause",
+"fieldType": "select",
+"fieldOptions": [
+{
+"id": "eq",
+"name": "is",
+"relatedFields": [
+{
+"defaultOption": "usps",
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "select",
+"fieldOptions": [
+{
+"id": "fedex",
+"name": "Fedex"
+},
+{
+"id": "ups",
+"name": "UPS"
+},
+{
+"id": "usps",
+"name": "USPS"
+}
+]
+}
+]
+},
+{
+"id": "con",
+"name": "contains",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "not_con",
+"name": "does not contain",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+}
+]
+},
+{
+"id": "starts_with",
+"name": "starts with",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+}
+]
+}
+]
+}
+]
+},
+{
+"id": "commodity",
+"name": "Commodity",
+"relatedFields": [
+{
+"fieldLabel": "Clause",
+"fieldName": "filterClause",
+"fieldType": "select",
+"fieldOptions": [
+{
+"id": "eq",
+"name": "is",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+},
+{
+"fieldLabel": "Include Children",
+"fieldName": "includeChildren",
+"fieldType": "checkbox"
+}
+]
+},
+{
+"id": "con",
+"name": "contains",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+},
+{
+"fieldLabel": "Include Children",
+"fieldName": "includeChildren",
+"fieldType": "checkbox"
+}
+]
+},
+{
+"id": "not_con",
+"name": "does not contain",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+},
+{
+"fieldLabel": "Include Children",
+"fieldName": "includeChildren",
+"fieldType": "checkbox"
+}
+]
+},
+{
+"id": "starts_with",
+"name": "starts with",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "text"
+},
+{
+"fieldLabel": "Include Children",
+"fieldName": "includeChildren",
+"fieldType": "checkbox"
+}
+]
+},
+{
+"id": "blank",
+"name": "is blank"
+},
+{
+"id": "not_blank",
+"name": "is not blank"
+}
+]
+}
+]
+},
+{
+"id": "favcountry",
+"name": "Favorite Country",
+"relatedFields": [
+{
+"fieldLabel": "Clause",
+"fieldName": "filterClause",
+"fieldType": "select",
+"fieldOptions": [
+{
+"id": "eq",
+"name": "is",
+"relatedFields": [
+{
+"fieldLabel": "Value",
+"fieldName": "filterValue",
+"fieldType": "autocomplete",
+"lookupUrl": "/autoCompleteMock?search_term={term}"
+}
+]
+}
+]
+}
+]
+}
+]
+}
+}
+]
+}
+}

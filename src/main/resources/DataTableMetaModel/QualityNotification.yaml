@@ -1,0 +1,128 @@
+type: tableWithSidePanel
+fields:
+  - name: id
+    label: "{notification.id}"
+    sortable: true
+    align: "center"
+    headerCellProps: {}
+
+  - name: notificationTypeLabel
+    label: "{notification.type}"
+    sortable: true
+    headerCellProps: {}
+
+  - name: supplier
+    label: "{notification.supplier}"
+    sortable: true
+    headerCellProps: {}
+
+  - name: orderNumber
+    label: "{notification.orderNum}"
+    sortable: true
+    headerCellProps: {
+      tooltipContent : "Purchase Order Number"
+    }
+
+  - name: material
+    label: "{notification.material}"
+    sortable: true
+    headerCellProps: { }
+
+  - name: criticalityLabel
+    label: "{notification.criticality}"
+    sortable: true
+    headerCellProps: { }
+
+  - name: statusLabel
+    label: "{notification.status}"
+    sortable: false
+    headerCellProps: { }
+
+toolbarActions:
+  - actionType: 'VIEW_DROPDOWN'
+    props:
+      allowCreate: true
+      createViewUrl: 'http://localhost:8080/data_table/new_view?key=<table_id>'
+      editViewUrl: '/data_table/edit_view'
+      recordExistsUrl: '/data_table/favorite_count?key=<table_id>'
+      selectOptions:
+        - id: 'All'
+          name: 'All'
+  - actionType: SIMPLE_SEARCH
+  - actionType: ADVANCED_SEARCH
+    enableAddOnlyOnLastRow: false
+    enableGrouping: true
+    enableMatching: true
+    maxGroups: 5
+    filterByCondition:
+      defaultOption: notificationType
+      fieldLabel: "Filter By"
+      fieldName: filterBy
+      fieldType: select
+      fieldOptions:
+        - id: notificationType
+          name: "Notification Type"
+          relatedFields:
+            - defaultOption: blank
+              fieldLabel: "{search.field.clause}"
+              fieldName: filterClause
+              fieldType: select
+              fieldOptions:
+                - id: eq
+                  name: "{search.clause.is}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: select
+                      fieldOptions:
+                        - id: PROCESS_DEVIATION
+                          name: "Process Deviation"
+                        - id: PRODUCT_DEVIATION
+                          name: "Product Deviation"
+                        - id: PACKAGING
+                          name: "Packaging"
+                        - id: CUSTOMER_COMPLAINT
+                          name: "Customer Complaint"
+
+        - id: status
+          name: "Status"
+          relatedFields:
+            - defaultOption: blank
+              fieldLabel: "{search.field.clause}"
+              fieldName: filterClause
+              fieldType: select
+              fieldOptions:
+                - id: eq
+                  name: "{search.clause.is}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: select
+                      fieldOptions:
+                        - id: SEND_TO_SUPPLIER
+                          name: "Send To Supplier"
+                        - id: IN_PROCESS
+                          name: "In Process"
+                        - id: CLOSED
+                          name: "Closed"
+        - id: criticality
+          name: "Criticality"
+          relatedFields:
+            - defaultOption: blank
+              fieldLabel: "{search.field.clause}"
+              fieldName: filterClause
+              fieldType: select
+              fieldOptions:
+                - id: eq
+                  name: "{search.clause.is}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: select
+                      fieldOptions:
+                        - id: MAJOR
+                          name: "Major"
+                        - id: MINOR
+                          name: "Minor"
+
+

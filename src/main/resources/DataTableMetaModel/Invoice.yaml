@@ -1,20 +1,5 @@
 type: tableWithToolbar
 fields:
-#  - title: string,
-#  - field: string,
-#  - align: 'left' | 'right' | 'center',
-#  - sortable: bool,
-#  - defaultSortDir: string,
-#  - width: string | number,
-#  - className: string | array,
-#  - dataType: string,
-#  - component: elementType,
-#  - render: func,
-#  - headerRender: func,
-#  - headerCellProps: object,
-#  - rowCellProps: object
-
-
   - name: id
     label: "{invoice.id}"
     sortable: true
@@ -62,16 +47,86 @@ fields:
 
 toolbarActions:
   - actionType: ADVANCED_SEARCH
+    enableGrouping: true
+    enableMatching: true
+    "enableAddOnlyOnLastRow": false,
+    "defaultFilterOption": 'shipping',
+    filterByCondition:
+      [
+        {
+          id: 'headerStatus',
+          filterClause: [
+          ],
+          filterValue: {
+
+          },
+          fieldType:
+        }
+      ]
+    
+  - actionType: ADVANCED_SEARCH
+    enableGrouping: true
+    enableMatching: true
+    filterByCondition: {
+        defaultOption: 'headerStatus',
+        fieldLabel: 'Filter By',
+        fieldName: 'filterBy',
+        fieldOptions: [
+          {
+            id: 'headerStatus',
+            name: 'Header Status',
+            relatedFields: [
+              {
+                fieldLabel: 'Clause',
+                fieldName: 'filterClause',
+                fieldOptions: [
+                  {
+                    id: 'eq',
+                    name: 'is',
+                    relatedFields: [
+                      {
+                        fieldLabel: 'Value',
+                        fieldName: 'filterValue',
+                        fieldType: 'autocomplete',
+                        lookupUrl: 'http://localhost:8080/autoCompleteMock?search_term={term}'
+                      }
+                    ]
+                  }
+                ],
+                fieldType: 'select'
+              }
+            ]
+          },
+
+          {
+            id: 'invoiceNum',
+            name: 'Invoice #',
+            relatedFields: [
+              {
+                fieldLabel: 'Clause',
+                fieldName: 'filterClause',
+                fieldOptions: [
+                  {
+                    id: 'like',
+                    name: 'contains',
+                    relatedFields: [
+                      {
+                        fieldLabel: 'Value',
+                        fieldName: 'filterValue',
+                        fieldType: 'text'
+                      }
+                    ]
+                  }
+                ],
+                fieldType: 'select'
+              }
+            ]
+          }
+       ],
+        fieldType: 'select'
+    }
 
   - actionType: SIMPLE_SEARCH
 
   - actionType: ACTIONS_MENU
-    props: {
-      menuItems: [
-        {
 
-          buttonText: 'Load from file',
-          buttonValue: 'loadFromFile',
-          onClick: { loadFromFileOnClick }
-        } ]
-    }

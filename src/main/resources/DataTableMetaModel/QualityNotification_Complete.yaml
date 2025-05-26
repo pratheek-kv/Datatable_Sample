@@ -1,0 +1,681 @@
+type: tableWithSidePanel
+fields:
+  - name: id
+    label: "{notification.id}"
+    sortable: true
+    align: "center"
+    headerCellProps: {}
+
+  - name: notificationTypeLabel
+    label: "{notification.type}"
+    sortable: true
+    headerCellProps: {}
+
+  - name: supplier
+    label: "{notification.supplier}"
+    sortable: true
+    headerCellProps: {}
+
+  - name: orderNumber
+    label: "{notification.orderNum}"
+    sortable: true
+    headerCellProps: {
+      tooltipContent : "Purchase Order Number"
+    }
+
+  - name: material
+    label: "{notification.material}"
+    sortable: true
+    headerCellProps: { }
+
+  - name: criticality
+    label: "{notification.criticality}"
+    sortable: true
+    headerCellProps: { }
+
+  - name: status
+    label: "{notification.status}"
+    sortable: false
+    headerCellProps: { }
+
+toolbarActions:
+  - actionType: 'VIEW_DROPDOWN'
+    props:
+      allowCreate: true
+      createViewUrl: '/data_table/new_view?key=<table_id>'
+      editViewUrl: '/data_table/edit_view'
+      onAddFavorite: function noRefCheck(){ }
+      onRemoveFavorite: function noRefCheck(){ }
+      recordExistsUrl: '/data_table/favorite_count?key=<table_id>'
+      selectOptions:
+        - id: 'All'
+          name: 'All'
+        - id: 'Draft'
+          name: 'Draft'
+        - id: 'Approved'
+          name: 'Approved'
+          favorite: true
+          hasRecords: true
+        - id: 'date_change'
+          name: 'Date Changes'
+          favorite: true
+        - id: 'qty_change'
+          name: 'Quantity Changes'
+          favorite: true
+          hasRecords: true
+        - id: '1'
+          name: 'Changes Requested'
+          recordCount: 10
+          editable: true
+        - id: 'custom_view_1'
+          isTemporary: true
+          name: 'Custom View 1'
+          favorite: true
+          hasRecords: true
+        - id: 'split_deliveries'
+          name: 'Split Deliveries'
+          favorite: true
+        - id: 'test_long_text'
+          name: 'Mauris ac eros odio. Etiam imperdiet vitae dolor eu feugiat. Pellentesque at ante dignissim, tincidunt ipsum quis, rutrum ante. Donec ac lorem nisl. Cras fringilla ex ut rutrum imperdiet. Fusce accumsan id est vel lacinia. Cras nec ligula eu velit mattis mollis. Nunc venenatis neque nibh, id dapibus orci aliquet id. Ut dictum mollis eros sed imperdiet. Phasellus quis enim nec felis sagittis varius. Ut et rutrum quam. Morbi id interdum felis. Mauris id dignissim odio.'
+          editable: true
+        - id: 'custom_view_2'
+          name: 'Custom View 2'
+  - actionType: SIMPLE_SEARCH
+  - actionType: ADVANCED_SEARCH
+    enableAddOnlyOnLastRow: false
+    enableGrouping: true
+    enableMatching: true
+    maxGroups: 5
+
+    commonConditions:
+      - name: dateClauses
+        fieldLabel: "{search.field.clause}"
+        fieldName: filterClause
+        fieldType: select
+        fieldOptions:
+          - id: today
+            name: "{search.clause.today}"
+          - id: yesterday
+            name: "{search.clause.yesterday}"
+          - id: month
+            name: "{search.clause.month.this}"
+          - id: last_month
+            name: "{search.clause.month.last}"
+          - id: quarter
+            name: "{search.clause.quarter.this}"
+          - id: last_quarter
+            name: "{search.clause.quarter.last}"
+          - id: year
+            name: "{search.clause.year.this}"
+          - id: last_year
+            name: "{search.clause.year.last}"
+          - id: within
+            name: "{search.clause.within.last}"
+            relatedFields:
+              - fieldLabel: "{search.field.value}"
+                fieldName: filterValue
+                fieldType: text
+              - fieldLabel: "{search.field.filter.unit}"
+                fieldName: filterUnits
+                fieldType: select
+                fieldOptions:
+                  - id: days
+                    name: "{search.clause.days}"
+                  - id: weeks
+                    name: "{search.clause.weeks}"
+                  - id: months
+                    name: "{search.clause.months}"
+          - id: within_next
+            name: "{search.clause.within.next}"
+            relatedFields:
+              - fieldLabel: "{search.field.value}"
+                fieldName: filterValue
+                fieldType: text
+              - fieldLabel: "{search.field.filter.unit}"
+                fieldName: filterUnits
+                fieldType: select
+                fieldOptions:
+                  - id: days
+                    name: "{search.clause.days}"
+                  - id: weeks
+                    name: "{search.clause.weeks}"
+                  - id: months
+                    name: "{search.clause.months}"
+          - id: eq
+            name: "{search.clause.is}"
+            relatedFields:
+              - fieldLabel: "{search.field.value}"
+                fieldName: filterValue
+                fieldType: date
+          - id: less
+            name: "{search.clause.on.before}"
+            relatedFields:
+              - fieldLabel: "{search.field.value}"
+                fieldName: filterValue
+                fieldType: date
+          - id: greater
+            name: "{search.clause.on.after}"
+            relatedFields:
+              - fieldLabel: "{search.field.value}"
+                fieldName: filterValue
+                fieldType: date
+          - id: between
+            name: "{search.clause.between}"
+            relatedFields:
+              - fieldLabel: "{search.value.date.start}"
+                fieldName: startDate
+                fieldType: date
+              - fieldLabel: "{search.value.date.end}"
+                fieldName: endDate
+                fieldType: date
+          - id: blank
+            name: "{search.clause.is.blank}"
+          - id: not_blank
+            name: "{search.clause.is.not.blank}"
+
+      - name: textClauses
+        defaultOption: blank
+        fieldLabel: "{search.field.clause}"
+        fieldName: filterClause
+        fieldType: select
+        fieldOptions:
+          - id: eq
+            name: "{search.clause.is}"
+            relatedFields:
+              - fieldLabel: "{search.field.value}"
+                fieldName: filterValue
+                fieldType: text
+          - id: con
+            name: "{search.clause.contains}"
+            relatedFields:
+              - fieldLabel: "{search.field.value}"
+                fieldName: filterValue
+                fieldType: text
+          - id: not_con
+            name: "{search.clause.not.contains}"
+            relatedFields:
+              - fieldLabel: "{search.field.value}"
+                fieldName: filterValue
+                fieldType: text
+          - id: starts_with
+            name: "{search.clause.starts.with}"
+            relatedFields:
+              - fieldLabel: "{search.field.value}"
+                fieldName: filterValue
+                fieldType: text
+          - id: between
+            name: "{search.clause.between}"
+            relatedFields:
+              - fieldLabel: "{search.field.value}"
+                fieldName: filterValue
+                fieldType: text
+              - fieldLabel: "{search.value.to}"
+                fieldName: filterValueTo
+                fieldType: text
+          - id: blank
+            name: "{search.clause.is.blank}"
+          - id: not_blank
+            name: "{search.clause.is.not.blank}"
+
+    filterByCondition:
+      defaultOption: shipping
+      fieldLabel: "{search.field.filter.by}"
+      fieldName: filterBy
+      fieldType: select
+      fieldOptions:
+        - id: invoiceNum
+          name: Invoice #
+          relatedFields:
+            - defaultOption: blank
+              fieldLabel: "{search.field.clause}"
+              fieldName: filterClause
+              fieldType: select
+              fieldOptions:
+                - id: eq
+                  name: "{search.clause.is}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                - id: con
+                  name: "{search.clause.contains}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                - id: not_con
+                  name: "{search.clause.not.contains}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                - id: starts_with
+                  name: "{search.clause.starts.with}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                - id: between
+                  name: "{search.clause.between}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                    - fieldLabel: "{search.value.to}"
+                      fieldName: filterValueTo
+                      fieldType: text
+                - id: blank
+                  name: "{search.clause.is.blank}"
+                - id: not_blank
+                  name: "{search.clause.is.not.blank}"
+
+        - id: lineNum
+          name: Line #
+          relatedFields:
+            - fieldLabel: "{search.field.clause}"
+              fieldName: filterClause
+              fieldType: select
+              fieldOptions:
+                - id: eq
+                  name: "{search.clause.is}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: number
+                - id: less
+                  name: "{search.clause.less.than}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: number
+                - id: greater
+                  name: "{search.clause.more.than}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: number
+                - id: between
+                  name: "{search.clause.between}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: number
+                    - fieldLabel: "{search.value.to}"
+                      fieldName: filterValueTo
+                      fieldType: number
+                - id: blank
+                  name: "{search.clause.is.blank}"
+                - id: not_blank
+                  name: "{search.clause.is.not.blank}"
+
+        - id: invoiceDate
+          name: Invoice Date
+          relatedFields:
+            - fieldLabel: "{search.field.clause}"
+              fieldName: filterClause
+              fieldType: select
+              fieldOptions:
+                - id: today
+                  name: "{search.clause.today}"
+                - id: yesterday
+                  name: "{search.clause.yesterday}"
+                - id: month
+                  name: "{search.clause.month.this}"
+                - id: last_month
+                  name: "{search.clause.month.last}"
+                - id: quarter
+                  name: "{search.clause.quarter.this}"
+                - id: last_quarter
+                  name: "{search.clause.quarter.last}"
+                - id: year
+                  name: "{search.clause.year.this}"
+                - id: last_year
+                  name: "{search.clause.year.last}"
+                - id: within
+                  name: "{search.clause.within.last}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                    - fieldLabel: "{search.field.filter.unit}"
+                      fieldName: filterUnits
+                      fieldType: select
+                      fieldOptions:
+                        - id: days
+                          name: "{search.clause.days}"
+                        - id: weeks
+                          name: "{search.clause.weeks}"
+                        - id: months
+                          name: "{search.clause.months}"
+                - id: within_next
+                  name: "{search.clause.within.next}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                    - fieldLabel: "{search.field.filter.unit}"
+                      fieldName: filterUnits
+                      fieldType: select
+                      fieldOptions:
+                        - id: days
+                          name: "{search.clause.days}"
+                        - id: weeks
+                          name: "{search.clause.weeks}"
+                        - id: months
+                          name: "{search.clause.months}"
+                - id: eq
+                  name: "{search.clause.is}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: date
+                - id: less
+                  name: "{search.clause.on.before}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: date
+                - id: greater
+                  name: "{search.clause.on.after}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: date
+                - id: between
+                  name: "{search.clause.between}"
+                  relatedFields:
+                    - fieldLabel: "{search.value.date.start}"
+                      fieldName: startDate
+                      fieldType: date
+                    - fieldLabel: "{search.value.date.end}"
+                      fieldName: endDate
+                      fieldType: date
+                - id: blank
+                  name: "{search.clause.is.blank}"
+                - id: not_blank
+                  name: "{search.clause.is.not.blank}"
+
+        - id: supplier
+          name: Supplier
+          relatedFields:
+            - defaultOption: blank
+              fieldLabel: "{search.field.clause}"
+              fieldName: filterClause
+              fieldType: select
+              fieldOptions:
+                - id: eq
+                  name: "{search.clause.is}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                - id: con
+                  name: "{search.clause.contains}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                - id: not_con
+                  name: "{search.clause.not.contains}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                - id: starts_with
+                  name: "{search.clause.starts.with}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                - id: between
+                  name: "{search.clause.between}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                    - fieldLabel: "{search.value.to}"
+                      fieldName: filterValueTo
+                      fieldType: text
+                - id: blank
+                  name: "{search.clause.is.blank}"
+                - id: not_blank
+                  name: "{search.clause.is.not.blank}"
+
+        - id: headerStatus
+          name: Header status
+          relatedFields:
+            - defaultOption: blank
+              fieldLabel: "{search.field.clause}"
+              fieldName: filterClause
+              fieldType: select
+              fieldOptions:
+                - id: eq
+                  name: "{search.clause.is}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                - id: con
+                  name: "{search.clause.contains}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                - id: not_con
+                  name: "{search.clause.not.contains}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                - id: starts_with
+                  name: "{search.clause.starts.with}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                - id: between
+                  name: "{search.clause.between}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                    - fieldLabel: "{search.value.to}"
+                      fieldName: filterValueTo
+                      fieldType: text
+                - id: blank
+                  name: "{search.clause.is.blank}"
+                - id: not_blank
+                  name: "{search.clause.is.not.blank}"
+
+        - id: desc
+          name: Description
+          relatedFields:
+            - enableFreeForm: true
+              fieldLabel: "{search.clause.contains}"
+              fieldName: filterValue
+              fieldType: multiselect
+              fieldOptions:
+                - id: draft
+                  name: Draft
+                - id: pending
+                  name: Pending
+                - id: approved
+                  name: Approved
+                - id: paid
+                  name: Paid
+
+        - id: clmadesc
+          name: CLMA Description
+          relatedFields:
+            - fieldLabel: "{search.field.clause}"
+              fieldName: filterClause
+              fieldType: select
+              fieldOptions:
+                - id: eq
+                  name: "{search.clause.is}"
+                  relatedFields:
+                    - enableFreeForm: true
+                      fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: multiselect
+                      fieldOptions:
+                        - id: draft
+                          name: Draft
+                        - id: pending
+                          name: Pending
+                        - id: approved
+                          name: Approved
+                        - id: paid
+                          name: Paid
+                - id: con
+                  name: "{search.clause.contains}"
+                  relatedFields:
+                    - enableFreeForm: true
+                      fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: multiselect
+                      fieldOptions:
+                        - id: draft
+                          name: Draft
+                        - id: pending
+                          name: Pending
+                        - id: approved
+                          name: Approved
+                        - id: paid
+                          name: Paid
+                - id: not_con
+                  name: "{search.clause.not.contains}"
+                  relatedFields:
+                    - enableFreeForm: true
+                      fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: multiselect
+                      fieldOptions:
+                        - id: draft
+                          name: Draft
+                        - id: pending
+                          name: Pending
+                        - id: approved
+                          name: Approved
+                        - id: paid
+                          name: Paid
+                - id: starts_with
+                  name: "{search.clause.starts.with}"
+                  relatedFields:
+                    - enableFreeForm: true
+                      fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: multiselect
+                      fieldOptions:
+                        - id: draft
+                          name: Draft
+                        - id: pending
+                          name: Pending
+                        - id: approved
+                          name: Approved
+                        - id: paid
+                          name: Paid
+
+        - id: shipping
+          name: Shipping
+          relatedFields:
+            - fieldLabel: "{search.field.clause}"
+              fieldName: filterClause
+              fieldType: select
+              fieldOptions:
+                - id: eq
+                  name: "{search.clause.is}"
+                  relatedFields:
+                    - defaultOption: usps
+                      fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: select
+                      fieldOptions:
+                        - id: fedex
+                          name: Fedex
+                        - id: ups
+                          name: UPS
+                        - id: usps
+                          name: USPS
+                - id: con
+                  name: "{search.clause.contains}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                - id: not_con
+                  name: "{search.clause.not.contains}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                - id: starts_with
+                  name: "{search.clause.starts.with}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+
+        - id: commodity
+          name: Commodity
+          relatedFields:
+            - fieldLabel: "{search.field.clause}"
+              fieldName: filterClause
+              fieldType: select
+              fieldOptions:
+                - id: eq
+                  name: "{search.clause.is}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                    - fieldLabel: Include Children
+                      fieldName: includeChildren
+                      fieldType: checkbox
+                - id: con
+                  name: "{search.clause.contains}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                    - fieldLabel: Include Children
+                      fieldName: includeChildren
+                      fieldType: checkbox
+                - id: not_con
+                  name: "{search.clause.not.contains}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                    - fieldLabel: Include Children
+                      fieldName: includeChildren
+                      fieldType: checkbox
+                - id: starts_with
+                  name: "{search.clause.starts.with}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: text
+                    - fieldLabel: Include Children
+                      fieldName: includeChildren
+                      fieldType: checkbox
+                - id: blank
+                  name: "{search.clause.is.blank}"
+                - id: not_blank
+                  name: "{search.clause.is.not.blank}"
+
+        - id: favcountry
+          name: Favorite Country
+          relatedFields:
+            - fieldLabel: "{search.field.clause}"
+              fieldName: filterClause
+              fieldType: select
+              fieldOptions:
+                - id: eq
+                  name: "{search.clause.is}"
+                  relatedFields:
+                    - fieldLabel: "{search.field.value}"
+                      fieldName: filterValue
+                      fieldType: autocomplete
+                      lookupUrl: /autoCompleteMock?search_term={term}
+
